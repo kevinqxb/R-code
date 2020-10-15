@@ -7,7 +7,7 @@ p <-ggplot(records, aes(order,rt, colour = order)) +
       geom_point() + labs(x = 'Order of the Measurements') +
       labs(y = 'Reaction Time') +
       labs(title = 'Scatter Plot of Reaction Time vs. Daily Order', colour = 'Test Order ')
-
+//connecting the mean points
 p + geom_point(data = newdf, pch=19, col='red',size = 2) +
   geom_line(data = newdf, aes(order, rt))
 
