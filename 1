@@ -1,4 +1,5 @@
 library(ggplot2)
+// scatter plot
 meansbynum <- tapply(records$rt, records$order, mean)
 newdf <- data.frame(cbind(order = as.numeric(as.vector(names(meansbynum))),
                           rt = as.numeric(meansbynum)))
@@ -9,3 +10,10 @@ p <-ggplot(records, aes(order,rt, colour = order)) +
 
 p + geom_point(data = newdf, pch=19, col='red',size = 2) +
   geom_line(data = newdf, aes(order, rt))
+
+// correlation plot
+library('corrplot')
+// selecting numeric variables
+idata <- data[,c(9,10,12,16,19,20,22:31)]
+m <- cor(idata, use = "complete.obs")
+corrplot(m, method = 'circle')
